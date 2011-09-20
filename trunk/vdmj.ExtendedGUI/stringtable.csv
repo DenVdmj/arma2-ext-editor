@@ -1,0 +1,16 @@
+﻿LANGUAGE, "English", "Russian", "German", "Italian", "Spanish", "French", "Czech", "Polish", "Hungarian"
+
+STR:VDMJ:DN:ARCMAP_UNITS, "Units (F1)", "Юниты (F1)", "Einheiten (F1)", "Unita (F1)", "Unidades (F1)", "Unites (F1)", "Jednotky (F1)", "Jednostki (F1)", "Egysegek (F1)",
+STR:VDMJ:DN:ARCMAP_GROUPS, "Groups (F2)", "Группы (F2)", "Gruppen (F2)", "Gruppi (F2)", "Grupos (F2)", "Groupements (F2)", "Skupiny (F2)", "Grupy (F2)", "Csapatok (F2)",
+STR:VDMJ:DN:ARCMAP_SENSORS, "Triggers (F3)", "Триггеры (F3)", "Ausloser (F3)", "Attivatori (F3)", "Activadores (F3)", "Declencheurs (F3)", "Senzory (F3)", "Wyzwalacze (F3)", "Triggerek (F3)",
+STR:VDMJ:DN:ARCMAP_WAYPOINTS, "Waypoints (F4)", "Вэйпойнты (F4)", "Wegpunkte (F4)", "Punti di passaggio (F4)", "Puntos referencia (F4)", "Points passage (F4)", "Body trasy (F4)", "Punkty nawig. (F4)", "Utpontok (F4)",
+STR:VDMJ:DN:ARCMAP_SYNCHRONIZE, "Synchronize (F5)", "Синхронизация (F5)", "Synchronisieren (F5)", "Sincronizzazione (F5)", "Sincronizar (F5)", "Synchronisation (F5)", "Synchronizace (F5)", "Synchroniz. (F5)", "Szinkronizalas (F5)",
+STR:VDMJ:DN:ARCMAP_MARKERS, "Markers (F6)", "Маркеры (F6)", "Markierungen (F6)", "Segnalatori (F6)", "Marcadores (F6)", "Marqueurs (F6)", "Znacky (F6)", "Markery (F6)", "Jelzesek (F6)",
+STR:VDMJ:DN:ARCMAP_MODULE, "Modules (F7)", "Модули (F7)", "Module (F7)", "Moduli (F7)", "Modulos (F7)", "Modules (F7)", "Moduly (F7)", "Moduly (F7)", "Modulok (F7)",
+STR:VDMJ:DN:ARCMAP_NOTHING, "Nothing", "Ничего", "Nothing", "Nothing", "Nothing", "Nothing", "Nothing", "Nothing", "Nothing"
+
+STR:VDMJ:DN:ARCMAP_SAVE, "Save", "Сохранить", "Speichern", "Salva", "Guardar", "Sauvegarder", "Ulozit", "Zapisz", "Mentes",
+STR:VDMJ:DN:ARCMAP_PREVIEW, "Preview", "Просмотр", "Vorschau", "Anteprima", "Vista previa", "Previsualiser", "Nahled", "Podglad", "Elonezet",
+STR:VDMJ:DN:ARCMAP_MERGE, "Merge", "Собрать", "Zus.-fuhren", "Unisci", "Fusionar", "Fusionner", "Pripojit", "Polacz", "Osszeolvaszt",
+STR:VDMJ:DN:ARCMAP_LOAD, "Load", "Загрузить", "Laden", "Carica", "Cargar", "Charger", "Nacist", "Wczytaj", "Betoltes",
+STR:VDMJ:DN:ARCMAP_INTEL, "Intel", "Разведка", "Nachr.", "Intelligence", "Intel", "Rens.", "Intel", "Wywiad", "Helyzet",
