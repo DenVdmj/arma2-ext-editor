@@ -12,14 +12,17 @@
 #define __codeToString "call" + str
 
 private [
-    // имена защищаемых переменных
-    "_variableNames",
-    // дальше имена переменных, которые можно портить внешним скриптам (файлу настроек, другим юзерским файлам)
+    "_protectedVariables",
+    // Имена переменных, которые можно портить внешним скриптам (файлу настроек, другим юзерским файлам)
+    // Эти переменные не защищаем, оставляем возможность их изменения в подключаемом файле настроек
     "_disableAutoFocus",
-    "_disableMapHint"
+    "_disableMapHint",
+    "_enableExperimentalMap"
 ];
 
-_variableNames = [
+// Имена защищаемых переменных
+_protectedVariables = [
+    "_protectedVariables",
     "_dspl",
     "_dsplName",
     "_dsplConf",
@@ -37,18 +40,21 @@ _variableNames = [
     "_textInputList",
     "_textInputMouseZEH",
     "_target",
-    "_ctrlValueSide",
-    "_variableNames"
+    "_ctrlValueSide"
 ];
 
 // имена защищаемых переменных
-private _variableNames;
+private _protectedVariables;
 
 // прочитать настройки
 call {
-    private _variableNames;
+    // отдельный scope, защищаем переменные скрипта
+    private _protectedVariables;
+    // значения по умолачнию
     _disableAutoFocus = false;
     _disableMapHint = false;
+    _enableExperimentalMap = false;
+    // подключаем настройки из папки "%UserProfile%\<Personal>\<ArmaUserPrifile>\scripts\vdmj.ExtendedGUI\"
     call compile preprocessFile "vdmj.ExtendedGUI\settings";
 };
 
@@ -128,12 +134,10 @@ _funcList2Set = {
 
 _parseModelName = {
     _this = toArray _this;
-    for "_i" from 0 to count _this - 1 do {
-        if (_this select _i == 58 ) exitwith {
-            _this set [_i+1, 62];
-            str parseText ("< " + toString _this);
-        };
-    };
+    _i = _this find 32;
+    if (_i < 0) exitwith { "" };
+    _this set [_i, 62];
+    str parseText ("< " + toString _this);
 };
 
 _parseObjectID = {

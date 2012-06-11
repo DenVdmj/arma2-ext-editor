@@ -28,7 +28,7 @@ if (_dsplName == "RscDisplayArcadeMap") then {
             _endPos = __uiGet(mouseWorldPosition);
 
             _strXML = parseText format [
-                "<t size='.9' shadow='false' color='#FFFFFF' align='center'>from %1 to %2 = %3</t>",
+                "<t size='1' shadow='false' color='#FFFFFF' font='Zeppelin32' align='center'>from %1 to %2 = %3</t>",
                 _startPos, _endPos, _startPos distance _endPos
             ];
 
@@ -36,9 +36,9 @@ if (_dsplName == "RscDisplayArcadeMap") then {
 
             _ctrlHintX = x(_mouseMapPosition) + .005;
             _ctrlHintY = y(_mouseMapPosition) + .0054;
-            _ctrlHintW = _strLen * .0105;
-            _ctrlHintH = .04;
-
+            _ctrlHintW = _strLen * .013;
+            _ctrlHintH = .041;
+            
             if (_ctrlHintX + _ctrlHintW > safeZoneX + safeZoneW) then {
                 _ctrlHintX = safeZoneX + safeZoneW - .002 - _ctrlHintW
             };
@@ -50,7 +50,8 @@ if (_dsplName == "RscDisplayArcadeMap") then {
             _ctrlHint = ctrlParent _self displayCtrl 98232;
             _ctrlHint ctrlShow true;
             _ctrlHint ctrlSetPosition [_ctrlHintX, _ctrlHintY, _ctrlHintW, _ctrlHintH];
-            _ctrlHint ctrlSetBackgroundColor [.5,0,0,.7];
+            _ctrlHint ctrlSetBackgroundColor [.45,0,0,.95];
+            //_ctrlHint ctrlSetBackgroundColor [1,1,1,.4];
             _ctrlHint ctrlCommit 0;
             _ctrlHint ctrlSetStructuredText _strXML;
 
@@ -115,14 +116,14 @@ if (_dsplName == "RscDisplayArcadeMap") then {
             _objectModel = str _object call __uiGet(parseModelName);
 
             _strLen = count toArray _objectModel;
-            _strWidth = (_strLen * .0105) + (6 * .01);
+            _strWidth = (_strLen * .0137) + (7 * .0137);
 
-            _ctrlHint ctrlShow true;
-            _ctrlHint ctrlSetPosition [x(_mouseMapPosition) + .01, y(_mouseMapPosition) + .01, _strWidth, .063];
-            _ctrlHint ctrlSetBackgroundColor [0,.2,0,.8];
+            _ctrlHint ctrlShow true;                                                                       
+            _ctrlHint ctrlSetPosition [x(_mouseMapPosition) + .01, y(_mouseMapPosition) + .01, _strWidth, .082];
+            _ctrlHint ctrlSetBackgroundColor [.45,0,0,.8];
             _ctrlHint ctrlCommit 0;
             _ctrlHint ctrlSetStructuredText parseText format [
-                "<t size='.7' shadow='false' color='#FFFFFF' align='left'>ID: %1<br />Model: %2<br />%3</t>",
+                '<t size="1" font="Zeppelin32" shadow="true" color="#FFFFFF" align="left">ID: %1<br />Model: %2<br />%3</t>',
                 _objectID,
                 _objectModel
             ];
@@ -141,17 +142,17 @@ if (_dsplName == "RscDisplayArcadeMap") then {
     _ctrlBISMap = _dspl displayCtrl 51;
     _ctrlMyMap = _dspl displayCtrl 1000;
 
-    _ctrlMap = if true then {
-        _ctrlMyMap ctrlEnable false;
-        _ctrlMyMap ctrlShow false;
-        _ctrlBISMap;
-    } else {
+    _ctrlMap = if (_enableExperimentalMap && !isNull _ctrlMyMap) then {
         _ctrlBISMap ctrlEnable false;
         _ctrlBISMap ctrlShow false;
         _ctrlMyMap ctrlShow true;
         _ctrlMyMap ctrlSetPosition [SafeZoneX, SafeZoneY, SafeZoneW, SafeZoneH];
         _ctrlMyMap ctrlCommit 0;
         _ctrlMyMap;
+    } else {
+        _ctrlMyMap ctrlEnable false;
+        _ctrlMyMap ctrlShow false;
+        _ctrlBISMap;
     };
 
     _dspl displayAddEventHandler ['KeyDown', 'call __uiGet(displayArcadeMap.ehKeyDown)'];

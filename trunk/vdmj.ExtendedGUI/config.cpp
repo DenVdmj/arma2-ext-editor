@@ -172,8 +172,8 @@ class RscDisplayArcadeMap {
             text = ;
         };
         class CA_ToolboxMode : RscToolbox {
-            sizeEx = 0.03;
-            h = 6 * 0.033;
+            //sizeEx = 0.03;
+            //h = 6 * 0.033;
             strings[] = {
                 "$STR:VDMJ:DN:ARCMAP_UNITS",
                 "$STR:VDMJ:DN:ARCMAP_GROUPS",
@@ -181,11 +181,10 @@ class RscDisplayArcadeMap {
                 "$STR:VDMJ:DN:ARCMAP_WAYPOINTS",
                 "$STR:VDMJ:DN:ARCMAP_SYNCHRONIZE",
                 "$STR:VDMJ:DN:ARCMAP_MARKERS",
-                "$STR:VDMJ:DN:ARCMAP_MODULE",
-                "$STR:VDMJ:DN:ARCMAP_NOTHING"
+                "$STR:VDMJ:DN:ARCMAP_MODULE"
             };
-            rows = 8;
-            columns = 1;
+            //rows = 8;
+            //columns = 1;
         };
     };
 };

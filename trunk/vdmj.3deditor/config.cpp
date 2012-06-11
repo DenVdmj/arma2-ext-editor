@@ -78,7 +78,7 @@ class RscDisplayArcadeMap {
             ptsPerSquareFor = 1000; // леса (векторные)
             ptsPerSquareForEdge = 1000; // граница леса (векторные)
             ptsPerSquareRoad = 1000; // дороги (векторные)
-            ptsPerSquareObj = 15;
+            ptsPerSquareObj = 15; //1000;
 
             showCountourInterval = false;
 
