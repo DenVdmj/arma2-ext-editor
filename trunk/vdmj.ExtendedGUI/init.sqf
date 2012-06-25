@@ -9,6 +9,7 @@
 #define __minimalHintTriggerDistance .02
 #define __maximalHintTriggerMapScale .19
 
+#define def(varname) private #varname; varname
 #define __codeToString "call" + str
 
 private [
@@ -308,4 +309,5 @@ _textInputMouseZEH = __codeToString {
 #include "init.RscDisplayArcadeUnit.sqf"
 #include "init.RscDisplayArcadeMap.sqf"
 #include "init.RscDisplayArcadeModules.sqf"
+#include "init.RscDisplayArcadeSensor.sqf"
 

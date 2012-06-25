@@ -48,11 +48,68 @@ class RscDisplayArcadeUnit {
             idc = 111;
             class MouseZ : vdmj_RscMouseZAngle {};
         };
-        class CA_TextPlacement : RscText {
-            idc = 1223;
-            class MouseZ : vdmj_RscMouseZPlacement {};
+        class CA_TextSide : RscText {
+            text = "$STR:DISP:ARCUNIT:SIDE";
         };
-        
+        class CA_TextFaction : RscText {
+            text = "$STR:DISP:ARCUNIT:FACTION";
+        };
+        class CA_TextRank : RscText {
+            text = "$STR:DISP:ARCUNIT:RANK";
+        };
+        class CA_TextClass : RscText {
+            text = "$STR:DISP:ARCUNIT:CLASS";
+        };
+        class CA_TextVehicle : RscText {
+            text = "$STR:DISP:ARCUNIT:VEHICLE";
+        };
+        class CA_TextControl : RscText {
+            text = "$STR:DISP:ARCUNIT:CTRL";
+        };
+        class CA_TextSpecial : RscText {
+            text = "$STR:DISP:ARCUNIT:SPECIAL";
+        };
+        class CA_TextAge : RscText {
+            text = "$STR:DISP:ARCUNIT:AGE";
+        };
+        class CA_TextText : RscText {
+            text = "$STR:DISP:ARCUNIT:TEXT";
+        };
+        class CA_TextLock : RscText {
+            text = "$STR:DISP:ARCUNIT:LOCK";
+        };
+        class CA_TextSkill : RscText {
+            text = "$STR:DISP:ARCUNIT:SKILL";
+        };
+        class CA_TextInit : RscText {
+            text = "$STR:DISP:ARCUNIT:INIT";
+        };
+        class CA_TextDescription : RscText {
+            text = "$STR:DISP:ARCUNIT:DESC";
+        };
+        class CA_TextHealth : RscText {
+            idc = 1108;
+            text = "$STR:DISP:ARCUNIT:HEALTH";
+        };
+        class CA_TextAzimut : RscText {
+            text = "$STR:DISP:ARCUNIT:AZIMUT";
+        };
+        class CA_TextFuel : RscText {
+            text = "$STR:DISP:ARCUNIT:FUEL";
+        };
+        class CA_TextAmmo : RscText {
+            text = "$STR:DISP:ARCUNIT:AMMO";
+        };
+        class CA_TextPresence : RscText {
+            text = "$STR:DISP:ARCUNIT:PRESENCE";
+        };
+        class CA_TextPresenceCondition : RscText {
+            text = "$STR:DISP:ARCUNIT:PRESENCE_COND";
+        };
+        class CA_TextPlacement : RscText {
+            class MouseZ : vdmj_RscMouseZPlacement {};
+            text = "$STR:DISP:ARCUNIT:PLACE";
+        };
         class vdmj_ValueDescription_Background : RscPicture {
             x = 0.284191;
             y = 0.517161;

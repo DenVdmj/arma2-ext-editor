@@ -1,21 +1,33 @@
 
 if (_dsplName == "RscDisplayArcadeMap") then {
 
-    private ["_ehKeyDown", "_ehDraw", "_ehMouseMoving"];
+    private ["_ehKeyDown", "_ehMouseButtonDblClick", "_ehDraw", "_ehMouseMoving"];
 
     __uiSet(displayArcadeMap.disableMapHint, _disableMapHint);
     __uiSet(displayArcadeMap.IDShowModeOn, false);
     __uiSet(prevNearestObjects.time, diag_tickTime);
     __uiSet(prevNearestObjects.mouseWorldPosition, getPosATL objNull);
     __uiSet(prevNearestObjects.staticObjects, [objNull]);
-    
 
+    __uiSet(onDblClickMouseMapPosition, getPosATL objNull);
+    __uiSet(onDblClickWorldPosition, getPosATL objNull);
+    
     _ehKeyDown = {
         if ((arg(1) == DIK_C || arg(1) == DIK_INSERT) && arg(3)) then {
             copyToClipboard str __uiGet(mouseWorldPosition);
         };
     };
 
+    _ehMouseButtonDblClick = {
+        _self = arg(0);
+        _mouseMapPosition = [arg(2), arg(3)];
+        _mouseWorldPosition = _self ctrlMapScreenToWorld _mouseMapPosition;
+        //diag_log parseText format [">>> _mouseMapPosition: %1", _mouseMapPosition];
+        //diag_log parseText format [">>> _mouseWorldPosition: %1", _mouseWorldPosition];
+        __uiSet(onDblClickMouseMapPosition, _mouseMapPosition);
+        __uiSet(onDblClickWorldPosition, _mouseWorldPosition);
+    };  
+    
     _ehDraw = {
 
         _self = arg(0);
@@ -134,6 +146,7 @@ if (_dsplName == "RscDisplayArcadeMap") then {
     };
 
     __uiSet(displayArcadeMap.ehKeyDown, _ehKeyDown);
+    __uiSet(displayArcadeMap.ehMouseButtonDblClick, _ehMouseButtonDblClick);
     __uiSet(displayArcadeMap.ehMouseMoving, _ehMouseMoving);
     __uiSet(displayArcadeMap.ehDraw, _ehDraw);
 
@@ -155,11 +168,19 @@ if (_dsplName == "RscDisplayArcadeMap") then {
         _ctrlBISMap;
     };
 
+    _dspl displayCtrl 111 buttonSetAction '__uiSet(displayArcadeMap.IDShowModeOn, !__uiGet(displayArcadeMap.IDShowModeOn))';
+    _dspl displayCtrl 111 ctrlAddEventHandler ['ToolBoxSelChanged', ''];
     _dspl displayAddEventHandler ['KeyDown', 'call __uiGet(displayArcadeMap.ehKeyDown)'];
+    _ctrlMap ctrlAddEventHandler ['MouseButtonDblClick', 'call __uiGet(displayArcadeMap.ehMouseButtonDblClick)'];
     _ctrlMap ctrlAddEventHandler ['Draw', 'call __uiGet(displayArcadeMap.ehDraw)'];
     _ctrlMap ctrlAddEventHandler ['MouseMoving', 'call __uiGet(displayArcadeMap.ehMouseMoving)'];
-    _dspl displayCtrl 111 buttonSetAction '__uiSet(displayArcadeMap.IDShowModeOn, !__uiGet(displayArcadeMap.IDShowModeOn))';
-    _dspl displayCtrl 111 ctrlAddEventHandler ['ToolBoxSelChanged', '']
 
 };
+
+
+
+
+
+
+
 
