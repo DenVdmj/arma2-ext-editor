@@ -3,7 +3,7 @@ rem ----------------------------------------------------------------------------
 rem Relative (by Arma2 folder) path to mod folder
 set RelativeModDir=@\$vdmj\ext-editor
 rem Addons directories list, may be a mask, as %~dp0/*
-set DirList="%~dp0vdmj.ExtendedGUI" "%~dp0vdmj.3deditor"
+set DirList="%~dp0vdmj.ExtendedGUI"
 rem Requires binarize
 set Binarize=on
 rem Requires signing

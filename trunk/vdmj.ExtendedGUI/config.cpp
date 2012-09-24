@@ -35,6 +35,16 @@ class vdmj_RscMouseZAngle {
     acceleration[] = {22.5, 1, 2, .1}; // normal, Shift, Alt, Ctrl
 };
 
+class RscDisplayTemplateLoad {
+    onLoad = "[_this select 0, 'RscDisplayArcadeUnit'] call (uiNamespace getVariable '/VDMJ/ExtendedGUI/init.sqf')";
+    //class controls {
+    //    class ValueIsland : RscCombo {
+    //    };
+    //    class ValueName : RscCombo {
+    //    };
+    //};
+};
+
 class RscDisplayArcadeUnit {
     onLoad = "[_this select 0, 'RscDisplayArcadeUnit'] call (uiNamespace getVariable '/VDMJ/ExtendedGUI/init.sqf')";
     class controls {

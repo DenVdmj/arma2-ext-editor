@@ -228,7 +228,8 @@ if (!_disableAutoFocus) then {
         _self = arg(0);
         _mouseZ = arg(1);
         _k = if (_mouseZ > 0) then { -1 } else { 1 };
-        _self lbSetCurSel ((0 max (_k + lbCurSel _self)) min (lbSize _self));
+        _index = ((0 max (_k + lbCurSel _self)) min (lbSize _self));
+        _self lbSetCurSel _index;
     }];
 } foreach _comboboxList;
 
