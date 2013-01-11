@@ -36,7 +36,7 @@ class vdmj_RscMouseZAngle {
 };
 
 class RscDisplayTemplateLoad {
-    onLoad = "[_this select 0, 'RscDisplayArcadeUnit'] call (uiNamespace getVariable '/VDMJ/ExtendedGUI/init.sqf')";
+    onLoad = "[_this select 0, 'RscDisplayTemplateLoad'] call (uiNamespace getVariable '/VDMJ/ExtendedGUI/init.sqf')";
     //class controls {
     //    class ValueIsland : RscCombo {
     //    };

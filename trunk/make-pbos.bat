@@ -44,9 +44,9 @@ rem ============================================================================
     echo --------------------------------
 
     for /D %%i in (%~1) do (
-        if exist "%TargetAddonDir%\%%~ni.pbo" (
-            echo del "%TargetAddonDir%\%%~ni.*"
-            del "%TargetAddonDir%\%%~ni.*"
+        if exist "%TargetAddonDir%\%%~nxi.pbo" (
+            echo del "%TargetAddonDir%\%%~nxi.*"
+            del "%TargetAddonDir%\%%~nxi.*"
         )
         if "%Binarize%"=="on" (
             "%BinPBOPath%\BinPBO.exe" "%%~i" "%TargetAddonDir%" -BINARIZE %USEPREFIX% -TEMP "%temp_binarize_pbos%" %includeMaskfile%
@@ -70,8 +70,8 @@ rem ============================================================================
         call :ReadBiPrivateKey "biprivatekey.private" "biprivatekey"
 
         for /D %%i in (%~1) do (
-            echo Sign file "%TargetAddonDir%\%%~ni.pbo" by "!biprivatekey!"
-            "%BinPBOPath%\DSSignFile\DSSignFile.exe" "!biprivatekey!" "%TargetAddonDir%\%%~ni.pbo"
+            echo Sign file "%TargetAddonDir%\%%~nxi" by "!biprivatekey!"
+            "%BinPBOPath%\DSSignFile\DSSignFile.exe" "!biprivatekey!" "%TargetAddonDir%\%%~nxi"
         )
 
         if "!biprivatekey!"=="" (

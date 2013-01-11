@@ -1,16 +1,13 @@
 ﻿// call compile preprocessFileLineNumbers "vdmj.ExtendedGUI\init.sqf"
-
-#include "\vdmj.ExtendedGUI\common.sqf"
-#include "\vdmj.ExtendedGUI\dik-codes.sqf"
+#define __project_name vdmj/XGUI.v0.1
+#include "\vdmj.ExtendedGUI\css\css"
+#include "\vdmj.ExtendedGUI\css\dik-codes.macro"
 
 #define __nearestObjectsTimeout 1
 #define __nearestObjectsRadius 30
 #define __nearestObjectsDistanceStep 10
 #define __minimalHintTriggerDistance .02
 #define __maximalHintTriggerMapScale .19
-
-#define def(varname) private #varname; varname
-#define __codeToString "call" + str
 
 private [
     "_protectedVariables",
@@ -88,19 +85,19 @@ call {
             _type = getNumber(_class >> "type");
             _control = _dspl displayCtrl _idc;
 
-            push(_configByControlKeys, _control);
-            push(_configByControlValues, _class);
+            __push(_configByControlKeys, _control);
+            __push(_configByControlValues, _class);
 
             _key = _ctrlByTypeListKeys find _type;
 
             if (_key < 0) then {
                 _key = count _ctrlByTypeListKeys;
-                push(_ctrlByTypeListKeys, _type);
-                push(_ctrlByTypeListValues, []);
+                __push(_ctrlByTypeListKeys, _type);
+                __push(_ctrlByTypeListValues, []);
             };
 
-            push(_ctrlByTypeListValues select _key, _control);
-            push(_allControlList, _control);
+            __push(_ctrlByTypeListValues select _key, _control);
+            __push(_allControlList, _control);
         };
     };
 };
@@ -158,47 +155,72 @@ _parseObjectID = {
 
 // Set global variables
 // access function
-__uiSet(dsplControls, _dsplControls);
-__uiSet(configByControlKeys, _configByControlKeys);
-__uiSet(configByControlValues, _configByControlValues);
-__uiSet(getConfigByControl, _getConfigByControl);
-__uiSet(parseModelName, _parseModelName);
-__uiSet(parseObjectID, _parseObjectID);
-__uiSet(list2Set, _funcList2Set);
+_dsplControls           __uiSet(dsplControls);
+_configByControlKeys    __uiSet(configByControlKeys);
+_configByControlValues  __uiSet(configByControlValues);
+_getConfigByControl     __uiSet(getConfigByControl);
+_parseModelName         __uiSet(parseModelName);
+_parseObjectID          __uiSet(parseObjectID);
+_funcList2Set           __uiSet(list2Set);
 
 // user input state
-__uiSet(focused, controlNull);
-__uiSet(pressedKey, 0);
-__uiSet(pressedShift, false);
-__uiSet(pressedCtrl, false);
-__uiSet(pressedAlt, false);
-__uiSet(mouseMapPosition, getPosATL objNull);
-__uiSet(mouseWorldPosition, getPosATL objNull);
-__uiSet(onKeyDownMouseMapPosition, getPosATL objNull);
-__uiSet(onKeyDownMouseWorldPosition, getPosATL objNull);
+controlNull __uiSet(focused);
+0 __uiSet(pressedKey);
+false __uiSet(pressedShift);
+false __uiSet(pressedCtrl);
+false __uiSet(pressedAlt);
+[0,0,0] __uiSet(mouseMapPosition);
+[0,0,0] __uiSet(mouseWorldPosition);
+[0,0,0] __uiSet(onKeyDownMouseMapPosition);
+[0,0,0] __uiSet(onKeyDownMouseWorldPosition);
+
+/*
+with uiNamespace do {
+    // Set global variables
+    // access function
+    p(dsplControls) = _dsplControls;
+    p(configByControlKeys) = _configByControlKeys;
+    p(configByControlValues) = _configByControlValues;
+    p(getConfigByControl) = _getConfigByControl;
+    p(parseModelName) = _parseModelName;
+    p(parseObjectID) = _parseObjectID;
+    p(list2Set) = _funcList2Set;
+
+    // user input state
+    p(focused) = controlNull;
+    p(pressedKey) = 0;
+    p(pressedShift) = false;
+    p(pressedCtrl) = false;
+    p(pressedAlt) = false;
+    p(mouseMapPosition) = [0,0,0];
+    p(mouseWorldPosition) = [0,0,0];
+    p(onKeyDownMouseMapPosition) = [0,0,0];
+    p(onKeyDownMouseWorldPosition) = [0,0,0];
+};
+*/
 
 _comboboxList = 4 call _getCtrlByType;
 _sliderList = 43 call _getCtrlByType;
 _textInputList = 2 call _getCtrlByType;
 
-_dspl displayAddEventHandler ["KeyDown", __codeToString {
+_dspl displayAddEventHandler ["KeyDown", __sqf2str {
     if (__uiGet(pressedKey) <= 1) then {
-        __uiSet(onKeyDownMouseMapPosition, __uiGet(mouseMapPosition));
-        __uiSet(onKeyDownMouseWorldPosition, __uiGet(mouseWorldPosition));
+        __uiGet(mouseMapPosition) __uiSet(onKeyDownMouseMapPosition);
+        __uiGet(mouseWorldPosition) __uiSet(onKeyDownMouseWorldPosition);
     };
-    __uiSet(pressedKey, arg(1));
-    __uiSet(pressedShift, arg(2));
-    __uiSet(pressedCtrl, arg(3));
-    __uiSet(pressedAlt, arg(4));
+    arg(1) __uiSet(pressedKey);
+    arg(2) __uiSet(pressedShift);
+    arg(3) __uiSet(pressedCtrl);
+    arg(4) __uiSet(pressedAlt);
     false;
 }];
 
-_dspl displayAddEventHandler ["KeyUp", __codeToString {
+_dspl displayAddEventHandler ["KeyUp", __sqf2str {
     _code = arg(1);
-    __uiSet(pressedKey, 1);
-    _resetShift = { __uiSet(pressedShift, false); };
-    _resetCtrl = { __uiSet(pressedCtrl, false); };
-    _resetAlt = { __uiSet(pressedAlt, false); };
+    1 __uiSet(pressedKey);
+    _resetShift = { false __uiSet(pressedShift) };
+    _resetCtrl = { false __uiSet(pressedCtrl) };
+    _resetAlt = { false __uiSet(pressedAlt) };
     switch (_code) do {
         case  42: _resetShift;
         case  54: _resetShift;
@@ -214,7 +236,7 @@ _dspl displayAddEventHandler ["KeyUp", __codeToString {
 if (!_disableAutoFocus) then {
     {
         {
-            _x ctrlAddEventHandler ["MouseHolding", __codeToString {
+            _x ctrlAddEventHandler ["MouseHolding", __sqf2str {
                 ctrlSetFocus arg(0)
             }];
         } foreach _x;
@@ -224,7 +246,7 @@ if (!_disableAutoFocus) then {
 // Прокрутка комбобоксов колесом мыши
 {
     //_x ctrlEnable true;
-    _x ctrlAddEventHandler ["MouseZChanged", __codeToString {
+    _x ctrlAddEventHandler ["MouseZChanged", __sqf2str {
         _self = arg(0);
         _mouseZ = arg(1);
         _k = if (_mouseZ > 0) then { -1 } else { 1 };
@@ -235,7 +257,7 @@ if (!_disableAutoFocus) then {
 
 // Управление слайдерами колесом мыши
 {
-    _x ctrlAddEventHandler ["MouseZChanged", __codeToString {
+    _x ctrlAddEventHandler ["MouseZChanged", __sqf2str {
         _self = arg(0);
         _mouseZ = arg(1);
         _k = if (_mouseZ > 0) then { -.1 } else { .1 };
@@ -251,7 +273,7 @@ if (!_disableAutoFocus) then {
     }];
 } foreach _sliderList;
 
-_textInputMouseZEH = __codeToString {
+_textInputMouseZEH = __sqf2str {
 
     _ctrl = arg(0);
 
@@ -311,4 +333,3 @@ _textInputMouseZEH = __codeToString {
 #include "init.RscDisplayArcadeMap.sqf"
 #include "init.RscDisplayArcadeModules.sqf"
 #include "init.RscDisplayArcadeSensor.sqf"
-

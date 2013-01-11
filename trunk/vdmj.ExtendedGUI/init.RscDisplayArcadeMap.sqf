@@ -3,15 +3,15 @@ if (_dsplName == "RscDisplayArcadeMap") then {
 
     private ["_ehKeyDown", "_ehMouseButtonDblClick", "_ehDraw", "_ehMouseMoving"];
 
-    __uiSet(displayArcadeMap.disableMapHint, _disableMapHint);
-    __uiSet(displayArcadeMap.IDShowModeOn, false);
-    __uiSet(prevNearestObjects.time, diag_tickTime);
-    __uiSet(prevNearestObjects.mouseWorldPosition, getPosATL objNull);
-    __uiSet(prevNearestObjects.staticObjects, [objNull]);
+    _disableMapHint __uiSet(displayArcadeMap.disableMapHint);
+    false __uiSet(displayArcadeMap.IDShowModeOn);
+    diag_tickTime __uiSet(prevNearestObjects.time);
+    [0,0,0] __uiSet(prevNearestObjects.mouseWorldPosition);
+    [objNull] __uiSet(prevNearestObjects.staticObjects);
 
-    __uiSet(onDblClickMouseMapPosition, getPosATL objNull);
-    __uiSet(onDblClickWorldPosition, getPosATL objNull);
-    
+    [0,0,0] __uiSet(onDblClickMouseMapPosition);
+    [0,0,0] __uiSet(onDblClickWorldPosition);
+
     _ehKeyDown = {
         if ((arg(1) == DIK_C || arg(1) == DIK_INSERT) && arg(3)) then {
             copyToClipboard str __uiGet(mouseWorldPosition);
@@ -24,10 +24,10 @@ if (_dsplName == "RscDisplayArcadeMap") then {
         _mouseWorldPosition = _self ctrlMapScreenToWorld _mouseMapPosition;
         //diag_log parseText format [">>> _mouseMapPosition: %1", _mouseMapPosition];
         //diag_log parseText format [">>> _mouseWorldPosition: %1", _mouseWorldPosition];
-        __uiSet(onDblClickMouseMapPosition, _mouseMapPosition);
-        __uiSet(onDblClickWorldPosition, _mouseWorldPosition);
-    };  
-    
+        _mouseMapPosition __uiSet(onDblClickMouseMapPosition);
+        _mouseWorldPosition __uiSet(onDblClickWorldPosition);
+    };
+
     _ehDraw = {
 
         _self = arg(0);
@@ -50,7 +50,7 @@ if (_dsplName == "RscDisplayArcadeMap") then {
             _ctrlHintY = y(_mouseMapPosition) + .0054;
             _ctrlHintW = _strLen * .013;
             _ctrlHintH = .041;
-            
+
             if (_ctrlHintX + _ctrlHintW > safeZoneX + safeZoneW) then {
                 _ctrlHintX = safeZoneX + safeZoneW - .002 - _ctrlHintW
             };
@@ -77,8 +77,8 @@ if (_dsplName == "RscDisplayArcadeMap") then {
         _mouseMapPosition = [arg(1), arg(2)];
         _mouseWorldPosition = _self ctrlMapScreenToWorld _mouseMapPosition;
 
-        __uiSet(mouseMapPosition, _mouseMapPosition);
-        __uiSet(mouseWorldPosition, _mouseWorldPosition);
+        _mouseMapPosition __uiSet(mouseMapPosition);
+        _mouseWorldPosition __uiSet(mouseWorldPosition);
 
         _dspl = ctrlParent _self;
 
@@ -100,13 +100,13 @@ if (_dsplName == "RscDisplayArcadeMap") then {
             _list = [];
             {
                 if (_x isKindOf "static" || _x isKindOf "StreetLamp" || typeof _x == "") then {
-                    push(_list, _x);
+                    __push(_list, _x);
                 };
             } foreach nearestObjects [_mouseWorldPosition, [], __nearestObjectsRadius];
 
-            __uiSet(prevNearestObjects.time, diag_tickTime);
-            __uiSet(prevNearestObjects.mouseWorldPosition, _mouseWorldPosition);
-            __uiSet(prevNearestObjects.staticObjects, _list);
+            diag_tickTime __uiSet(prevNearestObjects.time);
+            _mouseWorldPosition __uiSet(prevNearestObjects.mouseWorldPosition);
+            _list __uiSet(prevNearestObjects.staticObjects);
             _list;
         };
 
@@ -130,7 +130,7 @@ if (_dsplName == "RscDisplayArcadeMap") then {
             _strLen = count toArray _objectModel;
             _strWidth = (_strLen * .0137) + (7 * .0137);
 
-            _ctrlHint ctrlShow true;                                                                       
+            _ctrlHint ctrlShow true;
             _ctrlHint ctrlSetPosition [x(_mouseMapPosition) + .01, y(_mouseMapPosition) + .01, _strWidth, .082];
             _ctrlHint ctrlSetBackgroundColor [.45,0,0,.8];
             _ctrlHint ctrlCommit 0;
@@ -145,10 +145,10 @@ if (_dsplName == "RscDisplayArcadeMap") then {
         };
     };
 
-    __uiSet(displayArcadeMap.ehKeyDown, _ehKeyDown);
-    __uiSet(displayArcadeMap.ehMouseButtonDblClick, _ehMouseButtonDblClick);
-    __uiSet(displayArcadeMap.ehMouseMoving, _ehMouseMoving);
-    __uiSet(displayArcadeMap.ehDraw, _ehDraw);
+    _ehKeyDown __uiSet(displayArcadeMap.ehKeyDown);
+    _ehMouseButtonDblClick __uiSet(displayArcadeMap.ehMouseButtonDblClick);
+    _ehMouseMoving __uiSet(displayArcadeMap.ehMouseMoving);
+    _ehDraw __uiSet(displayArcadeMap.ehDraw);
 
     //#define mapIDC 51
 
@@ -168,7 +168,7 @@ if (_dsplName == "RscDisplayArcadeMap") then {
         _ctrlBISMap;
     };
 
-    _dspl displayCtrl 111 buttonSetAction '__uiSet(displayArcadeMap.IDShowModeOn, !__uiGet(displayArcadeMap.IDShowModeOn))';
+    _dspl displayCtrl 111 buttonSetAction '(!__uiGet(displayArcadeMap.IDShowModeOn)) __uiSet(displayArcadeMap.IDShowModeOn)';
     _dspl displayCtrl 111 ctrlAddEventHandler ['ToolBoxSelChanged', ''];
     _dspl displayAddEventHandler ['KeyDown', 'call __uiGet(displayArcadeMap.ehKeyDown)'];
     _ctrlMap ctrlAddEventHandler ['MouseButtonDblClick', 'call __uiGet(displayArcadeMap.ehMouseButtonDblClick)'];
@@ -176,11 +176,3 @@ if (_dsplName == "RscDisplayArcadeMap") then {
     _ctrlMap ctrlAddEventHandler ['MouseMoving', 'call __uiGet(displayArcadeMap.ehMouseMoving)'];
 
 };
-
-
-
-
-
-
-
-

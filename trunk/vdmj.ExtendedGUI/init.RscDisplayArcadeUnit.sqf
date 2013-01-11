@@ -16,7 +16,7 @@ if (_dsplName == "RscDisplayArcadeUnit") then {
             _titleText resize _index;
             _ctrlTitle ctrlSetText ((toString _titleText) + ": " + _name + _text + " - " + _class);
         };
-        _ctrlText = _dspl displayCtrl 1122; //101; //122; 
+        _ctrlText = _dspl displayCtrl 1122; //101; //122;
         _cfgClass = configFile >> "CfgVehicles" >> _class;
         _weapons = getArray (_cfgClass >> "weapons") - ["Throw", "Put"];
         _magazines = getArray (_cfgClass >> "magazines");
@@ -30,27 +30,24 @@ if (_dsplName == "RscDisplayArcadeUnit") then {
         {
             _strMagazines = _strMagazines + (call _getComma) + (_x select 0) + " x " + (str (_x select 1))
         } foreach (_magazines call __uiGet(list2Set));
-
         _ctrlText ctrlSetText (
             "" + _class + (
                 (if (count _weapons > 0) then { "; W: " + _strWeapons } else { "" }) +
                 (if (count _magazines > 0) then { "; M: " + _strMagazines } else { "" })
             )
         );
-
         _dspl displayCtrl 1108 ctrlSetText localize (
-            if (getText (_cfgClass >> "simulation") == "soldier") then { 
+            if (getText (_cfgClass >> "simulation") == "soldier") then {
                 "STR:DISP:ARCUNIT:HEALTH"
-            } else { 
-                "STR:DISP:ARCUNIT:ARMOR" 
+            } else {
+                "STR:DISP:ARCUNIT:ARMOR"
             }
         );
 
     };
-    
+
     def(_ctrlVehicleListBox) = _dspl displayCtrl 103;
     [_ctrlVehicleListBox, lbCurSel _ctrlVehicleListBox] call _setInfoText;
-    _ctrlVehicleListBox ctrlSetEventHandler ["LBSelChanged", __codeToString _setInfoText];
+    _ctrlVehicleListBox ctrlSetEventHandler ["LBSelChanged", __sqf2str _setInfoText];
 
 };
-
