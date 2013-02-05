@@ -56,15 +56,15 @@ if (_dsplName == "RscDisplayArcadeUnit") then {
         _ctrlTextHealth = _dspl displayCtrl 1108;
         _ctrlTextFuel   = _dspl displayCtrl 1109;
         _ctrlValueFuel  = _dspl displayCtrl  109;
-        _ctrlTextAmmo   = _dspl displayCtrl 1110;
-        _ctrlValueAmmo  = _dspl displayCtrl  110;
+      //_ctrlTextAmmo   = _dspl displayCtrl 1110;
+      //_ctrlValueAmmo  = _dspl displayCtrl  110;
 
         if (getText (_cfgClass >> "simulation") == "soldier") then {
             _ctrlTextHealth ctrlSetText localize "STR:DISP:ARCUNIT:HEALTH";
-            [[_ctrlTextFuel, _ctrlValueFuel, _ctrlTextAmmo, _ctrlValueAmmo], false] call _animEnable;
+            [[_ctrlTextFuel, _ctrlValueFuel/*, _ctrlTextAmmo, _ctrlValueAmmo*/], false] call _animEnable;
         } else {
             _ctrlTextHealth ctrlSetText localize "STR:DISP:ARCUNIT:ARMOR";
-            [[_ctrlTextFuel, _ctrlValueFuel, _ctrlTextAmmo, _ctrlValueAmmo], true] call _animEnable;
+            [[_ctrlTextFuel, _ctrlValueFuel/*, _ctrlTextAmmo, _ctrlValueAmmo*/], true] call _animEnable;
         };
 
     };

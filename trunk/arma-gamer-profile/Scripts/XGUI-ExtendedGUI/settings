@@ -1,0 +1,19 @@
+// sqf-file, xgui-extendedgui settings
+// 
+// Местоположение данного файла:
+//      "/ArmA 2 Other Profiles/%GamerName%/Scripts/XGUI-ExtendedGUI/settings"
+// или, если вы используете имя игрока по умолчанию:
+//      "/ArmA 2/Scripts/XGUI-ExtendedGUI/settings"
+//
+// Настройки читаются при загрузке редактора, поэтому, после внесения 
+// изменений, надо перезайти в редактор.
+//
+
+// отключает автополучение фокуса контролом при наведении мыши
+    //_disableAutoFocus = true;
+// отключает подсказки по объектам отображаемые в режиме показа id
+    //_disableMapHint = true;
+// отключает подсвечивание boundingbox работающий в режиме показа id
+    //_disableBBHighlighting = true;
+// экспериментальная фича, замена карты редактора на собственную
+    //_enableExperimentalMap = true;

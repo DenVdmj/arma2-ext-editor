@@ -164,7 +164,11 @@ if (_dsplName == "RscDisplayArcadeMap") then {
             };
         } foreach _staticObjects;
 
-        if (((_self ctrlMapWorldToScreen getPosATL _object) distance _mouseMapPosition) < __minimalHintTriggerDistance) then {
+
+        if (
+            !__uiGet(displayArcadeMap.disableMapHint) and
+            ((_self ctrlMapWorldToScreen getPosATL _object) distance _mouseMapPosition) < __minimalHintTriggerDistance
+        ) then {
             _vehicleVarName = vehicleVarName _object;
             _object setVehicleVarName "";
 
