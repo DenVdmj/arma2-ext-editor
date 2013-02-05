@@ -1,5 +1,5 @@
-// call compile preprocessFileLineNumbers "vdmj.ExtendedGUI\parseInit.sqf"
-// "call{'@!~';{for''from(1)to((_x)select(1))do{(_this)addMagazine((_x)select(0))}}foreach[['15Rnd_W1866_Pellet',3],['15Rnd_W1866_Slug',5]];{(_this)addWeapon(_x)}foreach['ItemKnife','ItemHatchet','ItemMatchbox','ItemFlashlight']};" call compile preprocessFileLineNumbers "vdmj.ExtendedGUI\parseInit.sqf"
+// call compile preprocessFileLineNumbers "XGUI-ExtendedGUI\parseInit.sqf"
+// "call{'@!~';{for''from(1)to((_x)select(1))do{(_this)addMagazine((_x)select(0))}}foreach[['15Rnd_W1866_Pellet',3],['15Rnd_W1866_Slug',5]];{(_this)addWeapon(_x)}foreach['ItemKnife','ItemHatchet','ItemMatchbox','ItemFlashlight']};" call compile preprocessFileLineNumbers "XGUI-ExtendedGUI\parseInit.sqf"
 
 _string = toArray _this;
 _lastIndex = count _string -1;

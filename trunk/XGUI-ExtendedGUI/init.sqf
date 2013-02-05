@@ -1,7 +1,7 @@
-﻿// call compile preprocessFileLineNumbers "vdmj.ExtendedGUI\init.sqf"
-#define __project_name vdmj/XGUI.v0.1
-#include "\vdmj.ExtendedGUI\css\css"
-#include "\vdmj.ExtendedGUI\css\dik-codes.macro"
+﻿// call compile preprocessFileLineNumbers "XGUI-ExtendedGUI\init.sqf"
+#define __project_name XGUI/XGUI.v0.2
+#include "\XGUI-ExtendedGUI\css\css"
+#include "\XGUI-ExtendedGUI\css\dik-codes.macro"
 
 #define __nearestObjectsTimeout 1
 #define __nearestObjectsRadius 30
@@ -15,6 +15,7 @@ private [
     // Эти переменные не защищаем, оставляем возможность их изменения в подключаемом файле настроек
     "_disableAutoFocus",
     "_disableMapHint",
+    "_disableBBHighlighting",
     "_enableExperimentalMap"
 ];
 
@@ -51,9 +52,10 @@ call {
     // значения по умолачнию
     _disableAutoFocus = false;
     _disableMapHint = false;
+    _disableBBHighlighting = false;
     _enableExperimentalMap = false;
-    // подключаем настройки из папки "%UserProfile%\<Personal>\<ArmaUserPrifile>\scripts\vdmj.ExtendedGUI\"
-    call compile preprocessFile "vdmj.ExtendedGUI\settings";
+    // подключаем настройки из папки "%UserProfile%\<Personal>\<ArmaUserPrifile>\scripts\XGUI-ExtendedGUI\"
+    call compile preprocessFile "XGUI-ExtendedGUI\settings";
 };
 
 _dspl = arg(0);
@@ -173,31 +175,6 @@ false __uiSet(pressedAlt);
 [0,0,0] __uiSet(mouseWorldPosition);
 [0,0,0] __uiSet(onKeyDownMouseMapPosition);
 [0,0,0] __uiSet(onKeyDownMouseWorldPosition);
-
-/*
-with uiNamespace do {
-    // Set global variables
-    // access function
-    p(dsplControls) = _dsplControls;
-    p(configByControlKeys) = _configByControlKeys;
-    p(configByControlValues) = _configByControlValues;
-    p(getConfigByControl) = _getConfigByControl;
-    p(parseModelName) = _parseModelName;
-    p(parseObjectID) = _parseObjectID;
-    p(list2Set) = _funcList2Set;
-
-    // user input state
-    p(focused) = controlNull;
-    p(pressedKey) = 0;
-    p(pressedShift) = false;
-    p(pressedCtrl) = false;
-    p(pressedAlt) = false;
-    p(mouseMapPosition) = [0,0,0];
-    p(mouseWorldPosition) = [0,0,0];
-    p(onKeyDownMouseMapPosition) = [0,0,0];
-    p(onKeyDownMouseWorldPosition) = [0,0,0];
-};
-*/
 
 _comboboxList = 4 call _getCtrlByType;
 _sliderList = 43 call _getCtrlByType;

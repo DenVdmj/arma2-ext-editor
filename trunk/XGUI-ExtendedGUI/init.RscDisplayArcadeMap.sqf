@@ -4,6 +4,8 @@ if (_dsplName == "RscDisplayArcadeMap") then {
     private ["_ehKeyDown", "_ehMouseButtonDblClick", "_ehDraw", "_ehMouseMoving"];
 
     _disableMapHint __uiSet(displayArcadeMap.disableMapHint);
+    _disableBBHighlighting __uiSet(displayArcadeMap.disableBBHighlighting);
+
     false __uiSet(displayArcadeMap.IDShowModeOn);
     diag_tickTime __uiSet(prevNearestObjects.time);
     [0,0,0] __uiSet(prevNearestObjects.mouseWorldPosition);
@@ -31,6 +33,39 @@ if (_dsplName == "RscDisplayArcadeMap") then {
     _ehDraw = {
 
         _self = arg(0);
+
+        _mouseWorldPosition = __uiGet(mouseWorldPosition);
+
+
+        if (
+            __uiGet(displayArcadeMap.IDShowModeOn) and
+            !__uiGet(displayArcadeMap.disableBBHighlighting)
+        ) then {
+            _colors = [[.7,0,0,.8], [0,0,.7,.8], [0,.6,0,.8], [.8,.6,0,.8], [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0]];
+            //_objects = nearestObjects [_mouseWorldPosition, ["All"], 50];
+            _objects = __uiGet(prevNearestObjects.staticObjects);
+            {
+                _confClass = configFile >> "CfgVehicles" >> typeOf _x;
+                _color = _colors select getNumber (_confClass >> "side");
+                _bb = boundingBox _x;
+                _bbMin = _bb select 0;
+                _bbMax = _bb select 1;
+                _a = (x(_bbMax) - x(_bbMin)) / 2;
+                _b = (y(_bbMax) - y(_bbMin)) / 2;
+                _c = sqrt (_a * _a + _b * _b);
+                // _c = (sizeOf typeOf _x) / 2;
+                if ( _c != 0 ) then {
+                    _pos = getPosATL _x;
+                    _self drawRectangle [_pos, _a, _b, getDir _x, _color, ""];
+                    _angle = asin (_a / _c);
+                    _alpha = _angle + getDir _x;
+                    _self drawLine [[x(_pos) - _c * sin _alpha, y(_pos) - _c * cos _alpha], [x(_pos) + _c * sin _alpha, y(_pos) + _c * cos _alpha], _color];
+                    _alpha = 180 - _angle + getDir _x;
+                    _self drawLine [[x(_pos) - _c * sin _alpha, y(_pos) - _c * cos _alpha], [x(_pos) + _c * sin _alpha, y(_pos) + _c * cos _alpha], _color];
+                };
+            } foreach _objects;
+        };
+
 
         if (__uiGet(pressedKey) == DIK_F) then {
 
@@ -85,12 +120,21 @@ if (_dsplName == "RscDisplayArcadeMap") then {
         _ctrlHint = _dspl displayCtrl 98232;
         _ctrlHintBackground = _dspl displayCtrl 98233;
 
-        if (
-            __uiGet(displayArcadeMap.disableMapHint) ||
-            !__uiGet(displayArcadeMap.IDShowModeOn) ||
-            ctrlMapScale _self > __maximalHintTriggerMapScale
-        ) exitwith {
+        _needUpdateStaticObjects =  (
+            (
+                !__uiGet(displayArcadeMap.disableMapHint) or
+                !__uiGet(displayArcadeMap.disableBBHighlighting)
+            ) and
+            __uiGet(displayArcadeMap.IDShowModeOn) and
+            ctrlMapScale _self <= __maximalHintTriggerMapScale
+        );
+
+        if (!_needUpdateStaticObjects or __uiGet(displayArcadeMap.disableMapHint)) then {
             _ctrlHint ctrlShow false;
+        };
+
+        if (!_needUpdateStaticObjects) exitwith {
+            [] __uiSet(prevNearestObjects.staticObjects);
         };
 
         _staticObjects = call {

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project name="">
+ <Package name="">
+  <Container name="">
+                                                        
+   <Key ID="STR:XGUI:DN:ARCMAP_UNITS"><English>Units [F1]</English><Russian>Объекты [F1]</Russian><German>Einheiten [F1]</German><Italian>Unita [F1]</Italian><Spanish>Unidades [F1]</Spanish><French>Unites [F1]</French><Czech>Jednotky [F1]</Czech><Polish>Jednostki [F1]</Polish><Hungarian>Egysegek [F1]</Hungarian></Key>
+   <Key ID="STR:XGUI:DN:ARCMAP_GROUPS"><English>Groups [F2]</English><Russian>Группы [F2]</Russian><German>Gruppen [F2]</German><Italian>Gruppi [F2]</Italian><Spanish>Grupos [F2]</Spanish><French>Groupements [F2]</French><Czech>Skupiny [F2]</Czech><Polish>Grupy [F2]</Polish><Hungarian>Csapatok [F2]</Hungarian></Key>
+   <Key ID="STR:XGUI:DN:ARCMAP_SENSORS"><English>Triggers [F3]</English><Russian>Триггеры [F3]</Russian><German>Ausloser [F3]</German><Italian>Attivatori [F3]</Italian><Spanish>Activadores [F3]</Spanish><French>Declencheurs [F3]</French><Czech>Senzory [F3]</Czech><Polish>Wyzwalacze [F3]</Polish><Hungarian>Triggerek [F3]</Hungarian></Key>
+   <Key ID="STR:XGUI:DN:ARCMAP_WAYPOINTS"><English>Waypoints [F4]</English><Russian>Вейпоинты [F4]</Russian><German>Wegpunkte [F4]</German><Italian>Punti di passaggio [F4]</Italian><Spanish>Puntos referencia [F4]</Spanish><French>Points passage [F4]</French><Czech>Body trasy [F4]</Czech><Polish>Punkty nawig. (F4)</Polish><Hungarian>Utpontok [F4]</Hungarian></Key>
+   <Key ID="STR:XGUI:DN:ARCMAP_SYNCHRONIZE"><English>Synchronize [F5]</English><Russian>Синхронизация [F5]</Russian><German>Synchronisieren [F5]</German><Italian>Sincronizzazione [F5]</Italian><Spanish>Sincronizar [F5]</Spanish><French>Synchronisation [F5]</French><Czech>Synchronizace [F5]</Czech><Polish>Synchroniz. (F5)</Polish><Hungarian>Szinkronizalas [F5]</Hungarian></Key>
+   <Key ID="STR:XGUI:DN:ARCMAP_MARKERS"><English>Markers [F6]</English><Russian>Маркеры [F6]</Russian><German>Markierungen [F6]</German><Italian>Segnalatori [F6]</Italian><Spanish>Marcadores [F6]</Spanish><French>Marqueurs [F6]</French><Czech>Znacky [F6]</Czech><Polish>Markery [F6]</Polish><Hungarian>Jelzesek [F6]</Hungarian></Key>
+   <Key ID="STR:XGUI:DN:ARCMAP_MODULE"><English>Modules [F7]</English><Russian>Модули [F7]</Russian><German>Module [F7]</German><Italian>Moduli [F7]</Italian><Spanish>Modulos [F7]</Spanish><French>Modules [F7]</French><Czech>Moduly [F7]</Czech><Polish>Moduly [F7]</Polish><Hungarian>Modulok [F7]</Hungarian></Key>
+   <Key ID="STR:XGUI:DN:ARCMAP_NOTHING"><English>Nothing</English><Russian>Nothing</Russian><German>Nothing</German><Italian>Nothing</Italian><Spanish>Nothing</Spanish><French>Nothing</French><Czech>Nothing</Czech><Polish>Nothing</Polish><Hungarian>Nothing</Hungarian></Key>
+
+   <Key ID="STR:XGUI:DN:ARCMAP_SAVE"><English>Save</English><Russian>Сохранить</Russian><German>Speichern</German><Italian>Salva</Italian><Spanish>Guardar</Spanish><French>Sauvegarder</French><Czech>Ulozit</Czech><Polish>Zapisz</Polish><Hungarian>Mentes</Hungarian></Key>
+   <Key ID="STR:XGUI:DN:ARCMAP_PREVIEW"><English>Preview</English><Russian>Предпросмотр</Russian><German>Vorschau</German><Italian>Anteprima</Italian><Spanish>Vista previa</Spanish><French>Previsualiser</French><Czech>Nahled</Czech><Polish>Podglad</Polish><Hungarian>Elonezet</Hungarian></Key>
+   <Key ID="STR:XGUI:DN:ARCMAP_MERGE"><English>Merge</English><Russian>Мерджить</Russian><German>Zus.-fuhren</German><Italian>Unisci</Italian><Spanish>Fusionar</Spanish><French>Fusionner</French><Czech>Pripojit</Czech><Polish>Polacz</Polish><Hungarian>Osszeolvaszt</Hungarian></Key>
+   <Key ID="STR:XGUI:DN:ARCMAP_LOAD"><English>Load</English><Russian>Загрузать</Russian><German>Laden</German><Italian>Carica</Italian><Spanish>Cargar</Spanish><French>Charger</French><Czech>Nacist</Czech><Polish>Wczytaj</Polish><Hungarian>Betoltes</Hungarian></Key>
+   <Key ID="STR:XGUI:DN:ARCMAP_INTEL"><English>Intel</English><Russian>Разведка</Russian><German>Nachr.</German><Italian>Intelligence</Italian><Spanish>Intel</Spanish><French>Rens.</French><Czech>Intel</Czech><Polish>Wywiad</Polish><Hungarian>Helyzet</Hungarian></Key>
+
+   <Key ID="STR:DISP:ARCUNIT:SIDE"><Russian>Сторона:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:FACTION"><Russian>Фракция:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:RANK"><Russian>Ранг:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:CLASS"><Russian>Класс:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:VEHICLE"><Russian>Юнит:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:CTRL"><Russian>Контроль:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:SPECIAL"><Russian>Положение:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:AGE"><Russian>Неведомая хрень:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:TEXT"><Russian>Переменная доступа:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:LOCK"><Russian>Замок:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:SKILL"><Russian>Опыт:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:INIT"><Russian>Инит:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:DESC"><Russian>Описание:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:HEALTH"><Russian>Здоровье:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:ARMOR"><Russian>Броня:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:AZIMUT"><Russian>Азимут:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:FUEL"><Russian>Топливо:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:AMMO"><Russian>Боеприпасы:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:PRESENCE"><Russian>Вероятность присутствия:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:PRESENCE:COND"><Russian>Условие присутствия:</Russian></Key>
+   <Key ID="STR:DISP:ARCUNIT:PLACE"><Russian>Радиус размещения:</Russian></Key>
+   <Key ID="STR:DISP:ERROR"><Russian>Ой!</Russian></Key>
+
+   <Key ID="str_playable_pg"><Russian>Играбельные летчик и стрелок</Russian></Key>
+   <Key ID="str_playable_p"><Russian>Играбельный летчик</Russian></Key>
+   <Key ID="str_playable_g"><Russian>Играбельный стрелк</Russian></Key>
+   <Key ID="str_playable_dg"><Russian>Играбельные водитель и стрелок</Russian></Key>
+   <Key ID="str_playable_d"><Russian>Играбельный водитель</Russian></Key>
+   <Key ID="str_playable_cpg"><Russian>Играбельные командир, летчик и стрелок</Russian></Key>
+   <Key ID="str_playable_cp"><Russian>Играбельные командир и летчик</Russian></Key>
+   <Key ID="str_playable_cg"><Russian>Играбельные командир и стрелк</Russian></Key>
+   <Key ID="str_playable_cdg"><Russian>Играбельные командир, водитель и стрелок</Russian></Key>
+   <Key ID="str_playable_cd"><Russian>Играбельные командир и водитель</Russian></Key>
+   <Key ID="str_playable_c"><Russian>Играбельный командир</Russian></Key>
+   <Key ID="str_playable"><Russian>Играбельный</Russian></Key>
+   <Key ID="str_nonplayable"><Russian>Искусственный интеллект</Russian></Key>
+
+  </Container>
+ </Package>
+</Project>
+        

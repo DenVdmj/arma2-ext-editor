@@ -1,6 +1,6 @@
-// call compile preprocessFileLineNumbers "vdmj.ExtendedGUI\isPosOnBuilding.sqf"
-#define __project_name vdmj/XGUI.v0.1
-#include "\vdmj.ExtendedGUI\css\css"
+// call compile preprocessFileLineNumbers "XGUI-ExtendedGUI\isPosOnBuilding.sqf"
+#define __project_name XGUI/XGUI.v0.1
+#include "\XGUI-ExtendedGUI\css\css"
 
 private [
     "_objectsList", "_onDblClickWorldPosition",
