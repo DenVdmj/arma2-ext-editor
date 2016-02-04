@@ -25,14 +25,15 @@ if (_dsplName == "RscDisplayArcadeUnit") then {
         _weapons = getArray (_cfgClass >> "weapons") - ["Throw", "Put"];
         _magazines = getArray (_cfgClass >> "magazines");
         _strWeapons = "";
-        _getComma = { _getComma = {", "}; "" };
+        _getCommaSource = { _getComma = {", "}; "" };
+        _getComma = _getCommaSource;
 
         {
             _strWeapons = _strWeapons + (call _getComma) + _x;
         } foreach _weapons;
 
         _strMagazines = "";
-        _getComma = { _getComma = {", "}; "" };
+        _getComma = _getCommaSource;
 
         {
             _strMagazines = _strMagazines + (call _getComma) + (_x select 0) + " x " + (str (_x select 1))
